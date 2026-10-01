@@ -2,6 +2,10 @@
 
 Checked on 30 September 2026 against the supplied FIT3179 Data Visualisation 2 brief.
 
+Deployment verified on 1 October 2026: https://bruhmeme67.github.io/Kevin/australia-in-bloom/
+
+GitHub Pages build [36826689991](https://github.com/bruhmeme67/Kevin/actions/runs/36826689991) succeeded for commit `20f026c40a22d59d36db17e093ed15fe8cde26f7`. The public page rendered all 13 charts. All four selectors were exercised in a browser, including the map's change from flower values to nursery values. No chart error messages appeared. The five pre-existing repository files were retained.
+
 ## Completed checks
 
 - All 13 readable chart specifications compile and execute in the bundled Vega/Vega-Lite versions.
@@ -16,7 +20,6 @@ Checked on 30 September 2026 against the supplied FIT3179 Data Visualisation 2 b
 
 ## Still requires personal completion
 
-- Publish the repository on the student's public GitHub Pages account and verify the real URL without signing in. This local test is not a production deployment check.
 - Draw and scan the student's own A4 sketch. The digital guide is only a planning aid.
 - Confirm the author name, check against any previously submitted sketch/tutor feedback and insert the actual URLs into the official Moodle template.
 - Review the code and be prepared to explain it in the interview. Chart count does not guarantee a particular rubric classification or mark.
