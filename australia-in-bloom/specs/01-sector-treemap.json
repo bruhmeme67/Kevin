@@ -1,0 +1,240 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Production value of nursery, cut flowers and turf in 2024/25.",
+  "width": 600,
+  "height": 270,
+  "padding": 0,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "data": [
+    {
+      "name": "annual",
+      "url": "data/annual.json"
+    },
+    {
+      "name": "leaves",
+      "source": "annual",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.year == 2025"
+        },
+        {
+          "type": "formula",
+          "as": "id",
+          "expr": "datum.sector"
+        },
+        {
+          "type": "formula",
+          "as": "parent",
+          "expr": "\"All\""
+        }
+      ]
+    },
+    {
+      "name": "tree_root",
+      "values": [
+        {
+          "id": "All",
+          "parent": null,
+          "production": 0
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "source": [
+        "tree_root",
+        "leaves"
+      ],
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "production",
+          "method": {
+            "signal": "width < 500 ? \"slice\" : \"binary\""
+          },
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ],
+          "paddingInner": 4
+        }
+      ]
+    },
+    {
+      "name": "cells",
+      "source": "tree",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.depth == 1"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Nursery",
+        "Cut flowers",
+        "Turf"
+      ],
+      "range": [
+        "#147d64",
+        "#b63468",
+        "#ae7c24"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "cells"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "field": "x0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "y2": {
+            "field": "y1"
+          },
+          "fill": {
+            "scale": "color",
+            "field": "sector"
+          },
+          "tooltip": {
+            "signal": "{\"Sector\":datum.sector,\"Production (A$m)\":datum.production,\"Share\":format(datum.production/3382.5,\".1%\")}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "cells"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.x0+12"
+          },
+          "y": {
+            "signal": "datum.y0 + (datum.y1-datum.y0 < 65 ? (datum.y1-datum.y0)/2+4 : 25)"
+          },
+          "fill": {
+            "value": "white"
+          },
+          "text": {
+            "signal": "datum.y1-datum.y0 < 65 ? datum.sector+\"  $\"+format(datum.production,\",.1f\")+\"m  (\"+format(datum.production/3382.5,\".1%\")+\")\" : (datum.sector == \"Cut flowers\" ? \"Flowers\" : datum.sector)"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "signal": "datum.y1-datum.y0 < 65 ? 13 : 15"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "limit": {
+            "signal": "datum.x1-datum.x0-18"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "cells"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.x0+12"
+          },
+          "y": {
+            "signal": "datum.y0+49"
+          },
+          "fill": {
+            "value": "white"
+          },
+          "text": {
+            "signal": "\"$\"+format(datum.production,\",.1f\")+\"m\""
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 14
+          },
+          "limit": {
+            "signal": "datum.x1-datum.x0-18"
+          },
+          "opacity": {
+            "signal": "datum.y1-datum.y0 < 65 ? 0 : 1"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "cells"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "datum.x0+12"
+          },
+          "y": {
+            "signal": "datum.y1-16"
+          },
+          "fill": {
+            "value": "white"
+          },
+          "text": {
+            "signal": "format(datum.production/3382.5,\".1%\")"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 22
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "opacity": {
+            "signal": "datum.y1-datum.y0 > 85 ? 1 : 0"
+          }
+        }
+      }
+    }
+  ]
+}

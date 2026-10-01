@@ -1,0 +1,44 @@
+[
+  {
+    "country": "Malaysia",
+    "longitude": 113.83708,
+    "latitude": 2.528667,
+    "label_longitude": 125.83708,
+    "label_latitude": -2.471333
+  },
+  {
+    "country": "Kenya",
+    "longitude": 37.907632,
+    "latitude": 0.549043,
+    "label_longitude": 37.907632,
+    "label_latitude": 0.549043
+  },
+  {
+    "country": "Vietnam",
+    "longitude": 105.387292,
+    "latitude": 21.715416,
+    "label_longitude": 120.387292,
+    "label_latitude": 22.715416
+  },
+  {
+    "country": "Ecuador",
+    "longitude": -78.188375,
+    "latitude": -1.259076,
+    "label_longitude": -78.188375,
+    "label_latitude": -1.259076
+  },
+  {
+    "country": "China",
+    "longitude": 106.337289,
+    "latitude": 32.498178,
+    "label_longitude": 103.337289,
+    "label_latitude": 38.498178
+  },
+  {
+    "country": "Australia",
+    "longitude": 134.04972,
+    "latitude": -24.129522,
+    "label_longitude": 134.04972,
+    "label_latitude": -24.129522
+  }
+]

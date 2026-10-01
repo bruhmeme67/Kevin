@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An interactive story about Australia's flowers, nursery plants and turf: regional production, international flower trade and five years of change.">
+  <title>Australia in Bloom — Flowers &amp; Horticulture</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23193c32'/%3E%3Ctext x='16' y='24' text-anchor='middle' font-family='Georgia' font-size='25' fill='%23ffffff'%3Eb%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/vega.min.js"></script>
+  <script defer src="vendor/vega-lite.min.js"></script>
+  <script defer src="vendor/vega-embed.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#story">Skip to the story</a>
+<header class="masthead wrap">
+  <span class="brand">A FIELD GUIDE IN DATA</span>
+  <span class="edition">Australia · Year ending June 2025</span>
+</header>
+<main id="story">
+  <section class="hero wrap" aria-labelledby="page-title">
+    <p class="eyebrow">FLOWERS, NURSERY PLANTS &amp; TURF</p>
+    <h1 id="page-title">Australia in <em>bloom.</em></h1>
+    <div class="hero-intro">
+      <p>Behind a bouquet or a backyard garden is a nationwide growing industry. Follow where its value comes from, which states grow it, and how Australia’s flower trade is changing.</p>
+      <p class="scope">This story focuses on the handbook’s <strong>“other horticulture”</strong> group: nursery plants, cut flowers and turf. Fruit, vegetables and nuts are outside this comparison.</p>
+    </div>
+    <div class="headline-stats" aria-label="Key figures for 2024/25">
+      <div><span class="stat">$3.38<span>bn</span></span><p>combined production value</p></div>
+      <div><span class="stat pink">$324.7<span>m</span></span><p>Australian cut flower production</p></div>
+      <div><span class="stat">$100.1<span>m</span></span><p>flower imports above exports</p></div>
+    </div>
+    <p class="micro">Australian dollars at current prices. Monetary growth includes price changes. <a href="#sources">Sources and definitions</a></p>
+  </section>
+
+  <nav class="story-nav wrap" aria-label="Story sections">
+    <a href="#industry"><span>01</span> The industry</a>
+    <a href="#regions"><span>02</span> The growing regions</a>
+    <a href="#trade"><span>03</span> The flower trade</a>
+    <a href="#change"><span>04</span> What is changing</a>
+  </nav>
+
+  <section class="chapter wrap" id="industry" aria-labelledby="industry-title">
+    <div class="chapter-heading"><span class="chapter-number">01</span><div><p class="eyebrow">THE INDUSTRY</p><h2 id="industry-title">The biggest business is living plants.</h2></div></div>
+    <p class="chapter-lead">Nurseries generated <strong>81.5% of this group’s production value</strong> in 2024/25. Cut flowers are a smaller industry, but their value recovered more strongly over the latest year.</p>
+    <div class="grid two">
+      <figure class="chart-card" id="figure-01">
+        <figcaption><span class="chart-number">01 / SCALE</span><h3>Nurseries account for four-fifths of value</h3><p>Production value, 2024/25. Rectangle area represents dollars.</p></figcaption>
+        <div class="chart" id="chart-01" aria-label="Treemap of nursery, flower and turf production"></div>
+        <p class="chart-note">“Nursery” includes plants supplied to many markets, including gardens, landscapes and other growers.</p>
+        <div class="chart-tools" data-chart="01"></div>
+      </figure>
+      <figure class="chart-card" id="figure-02">
+        <figcaption><span class="chart-number">02 / FIVE-YEAR VIEW</span><h3>Flowers finish above their 2020/21 level</h3><p>Each sector starts at 100, making relative change comparable.</p></figcaption>
+        <div class="chart" id="chart-02" aria-label="Indexed production value by sector from 2020/21 to 2024/25"></div>
+        <p class="chart-note"><strong>Use the selector</strong> to highlight a sector. An index of 110 means value is 10% above the starting year.</p>
+        <div class="chart-tools" data-chart="02"></div>
+      </figure>
+    </div>
+    <div class="split-row">
+      <aside class="reading-note"><p class="eyebrow">A RECOVERY WITH DIFFERENT SPEEDS</p><h3>Flowers grew 12.0% in the latest year.</h3><p>Nursery production value rose 4.1%. Turf was almost unchanged, down 0.2%. The green cells reveal the recovery after two weaker years for flowers and nurseries.</p></aside>
+      <figure class="chart-card" id="figure-03">
+        <figcaption><span class="chart-number">03 / ANNUAL CHANGE</span><h3>Growth has not been steady</h3><p>Change in production value from the previous financial year.</p></figcaption>
+        <div class="chart" id="chart-03" aria-label="Heatmap of annual production value change"></div>
+        <p class="chart-note"><span class="key-square green"></span> Rise <span class="key-square gold"></span> Fall. Percentages are calculated from published values rounded to A$0.1m.</p>
+        <div class="chart-tools" data-chart="03"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="chapter region-chapter" id="regions" aria-labelledby="regions-title"><div class="wrap">
+    <div class="chapter-heading"><span class="chapter-number">02</span><div><p class="eyebrow">THE GROWING REGIONS</p><h2 id="regions-title">Where flowers grow changes the picture.</h2></div></div>
+    <p class="chapter-lead"><strong>Victoria leads in total flower production value.</strong> Relative to population, Western Australia leads the six states with reported figures. These are measures of production, not household flower spending.</p>
+    <div class="grid two">
+      <figure class="chart-card" id="figure-04">
+        <figcaption><span class="chart-number">04 / PRODUCTION RELATIVE TO POPULATION</span><h3>Western Australia stands out per resident</h3><p>Cut flower production value divided by the state’s population.</p></figcaption>
+        <div class="chart" id="chart-04" aria-label="Choropleth of flower production value per resident by Australian state"></div>
+        <p class="chart-note">Population at 30 June 2025, from the ABS March 2026 release. Grey = no separate flower value reported. <strong>Hover a state</strong> for the inputs and result.</p>
+        <div class="chart-tools" data-chart="04"></div>
+      </figure>
+      <figure class="chart-card" id="figure-05">
+        <figcaption><span class="chart-number">05 / TOTAL PRODUCTION</span><h3>Victoria leads flowers; NSW and QLD lead nurseries</h3><p>Circle area represents production value. Change the sector below.</p></figcaption>
+        <div class="chart" id="chart-05" aria-label="Proportional symbol map of state flower or nursery production value"></div>
+        <p class="chart-note">Symbols represent entire states, not farm locations. The size scale updates when the sector changes; read its legend before comparing.</p>
+        <div class="chart-tools" data-chart="05"></div>
+      </figure>
+    </div>
+    <figure class="chart-card wide" id="figure-06">
+      <figcaption><span class="chart-number">06 / THE REGIONAL MIX</span><h3>Flowers have a larger role in WA, SA and Tasmania</h3><p>Wider columns mean more combined nursery and flower production. The pink height shows flowers’ share within each region.</p></figcaption>
+      <div class="chart" id="chart-06" aria-label="Marimekko chart of flower and nursery production across regions"></div>
+      <p class="chart-note">SA and Tasmania are combined to keep the smaller regions legible. Includes the six states with both values reported. NT and ACT are excluded because a separate flower value is unavailable. Turf is excluded.</p>
+      <div class="chart-tools" data-chart="06"></div>
+    </figure>
+    <div class="split-row">
+      <aside class="reading-note"><p class="eyebrow">GROWING AND EXPORTING ARE DIFFERENT ROLES</p><h3>Queensland accounts for 58.9% of flower export value.</h3><p>Its share of production value is 19.0%. These percentages have different national totals as their denominators. They do not mean that 58.9% of Queensland’s flowers are exported.</p></aside>
+      <figure class="chart-card" id="figure-07">
+        <figcaption><span class="chart-number">07 / PRODUCTION &amp; EXPORT ROLES</span><h3>Queensland’s export share exceeds its production share</h3><p>Published state shares of Australian cut flower value, 2024/25.</p></figcaption>
+        <div class="chart" id="chart-07" aria-label="Dumbbell chart comparing state production and export shares"></div>
+        <p class="chart-note">The four states shown are those with percentage shares labelled in the handbook’s export chart. Export origin is not a count of farms or stems.</p>
+        <div class="chart-tools" data-chart="07"></div>
+      </figure>
+    </div>
+  </div></section>
+
+  <section class="chapter wrap" id="trade" aria-labelledby="trade-title">
+    <div class="chapter-heading"><span class="chapter-number">03</span><div><p class="eyebrow">THE FLOWER TRADE</p><h2 id="trade-title">A bouquet can have global roots.</h2></div></div>
+    <p class="chapter-lead">Australia imported <strong>$108.1 million</strong> in cut flowers in 2024/25. Malaysia remained the largest named source. Vietnam’s value nearly doubled in one year and moved from fifth to third among the five named origins.</p>
+    <figure class="chart-card wide" id="figure-08">
+      <figcaption><span class="chart-number">08 / CONNECTIONS ACROSS THE WORLD</span><h3>Five countries supplied about 83% of flower import value</h3><p>Links run from source countries to Australia. Thicker links represent higher import value.</p></figcaption>
+      <div class="chart" id="chart-08" aria-label="Flow map of the five largest named origins of Australian cut flower imports"></div>
+      <div class="origin-strip"><span>Malaysia <strong>$22.6m</strong></span><span>Kenya <strong>$20.5m</strong></span><span>Vietnam <strong>$18.7m</strong></span><span>Ecuador <strong>$15.8m</strong></span><span>China <strong>$12.5m</strong></span></div>
+      <p class="chart-note">Geographic links show trading relationships, not shipment paths, transport modes or ports. “Others” ($17.9m) has no single location and is omitted. Totals can differ by A$0.1m because of source rounding.</p>
+      <div class="chart-tools" data-chart="08"></div>
+    </figure>
+    <div class="grid two">
+      <figure class="chart-card" id="figure-09">
+        <figcaption><span class="chart-number">09 / CHANGING ORIGINS</span><h3>Vietnam moves up the ranking</h3><p>Rank among the five named flower import origins, 2022/23–2024/25.</p></figcaption>
+        <div class="chart" id="chart-09" aria-label="Bump chart ranking cut flower import origins over three years"></div>
+        <p class="chart-note">Ranks describe order, not the size of the gap. <strong>Hover a point</strong> for dollar values; use the selector to follow one country.</p>
+        <div class="chart-tools" data-chart="09"></div>
+      </figure>
+      <figure class="chart-card" id="figure-10">
+        <figcaption><span class="chart-number">10 / WHAT DROVE THE RISE?</span><h3>Vietnam contributed $8.9m of the $11.4m increase</h3><p>Contributions to the change in flower imports from 2023/24 to 2024/25.</p></figcaption>
+        <div class="chart" id="chart-10" aria-label="Waterfall chart decomposing annual flower import growth by origin"></div>
+        <p class="chart-note">Vietnam contributed <strong>78% of the net rise</strong>. Declining imports from “Others” partly offset increases elsewhere. This is an arithmetic contribution, not a causal explanation.</p>
+        <div class="chart-tools" data-chart="10"></div>
+      </figure>
+    </div>
+    <div class="split-row">
+      <aside class="reading-note blue-note"><p class="eyebrow">A SMALLER OUTWARD TRADE</p><h3>Japan, the Netherlands and the US received 70.4% of flower export value.</h3><p>Australia’s cut flower exports were valued at $8.0m in 2024/25. The leading destinations are concentrated, even though the overall outward trade is much smaller than imports.</p></aside>
+      <figure class="chart-card" id="figure-11">
+        <figcaption><span class="chart-number">11 / EXPORT DESTINATIONS</span><h3>Three destinations dominate flower exports</h3><p>Share of Australian cut flower export value, 2024/25.</p></figcaption>
+        <div class="chart" id="chart-11" aria-label="Bar chart of Australian cut flower export destination shares"></div>
+        <p class="chart-note">Shares are taken directly from the handbook. Dollar values shown as “less than $1m” remain ranges in the accompanying data.</p>
+        <div class="chart-tools" data-chart="11"></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="chapter closing-chapter" id="change" aria-labelledby="change-title"><div class="wrap">
+    <div class="chapter-heading"><span class="chapter-number">04</span><div><p class="eyebrow">WHAT IS CHANGING</p><h2 id="change-title">Higher value tells only part of the story.</h2></div></div>
+    <p class="chapter-lead">Flower imports exceed exports in every year shown. Nurseries, meanwhile, recovered in both value and units in 2024/25, but remained below their 2020/21 level. <strong>Dollar growth alone does not show that more plants were grown.</strong></p>
+    <div class="grid two">
+      <figure class="chart-card" id="figure-12">
+        <figcaption><span class="chart-number">12 / THE TRADE GAP</span><h3>The net flower import bill reached $100.1m</h3><p>Import and export values use the same dollar scale on opposite sides.</p></figcaption>
+        <div class="chart" id="chart-12" aria-label="Butterfly chart of flower imports and exports over five years"></div>
+        <p class="chart-note">The 2024/25 net import value is $108.1m − $8.0m. It is a trade balance, not a measure of profit, consumer spending or the share of flowers sold that are imported.</p>
+        <div class="chart-tools" data-chart="12"></div>
+      </figure>
+      <figure class="chart-card" id="figure-13">
+        <figcaption><span class="chart-number">13 / NURSERY VALUE &amp; VOLUME</span><h3>Fewer plants than 2020/21, at nearly the same total value</h3><p>Follow the labelled years. Right means more units; up means higher value.</p></figcaption>
+        <div class="chart" id="chart-13" aria-label="Connected scatter plot relating nursery production units and value over five years"></div>
+        <p class="chart-note">Between 2020/21 and 2024/25, nursery units fell <strong>8.2%</strong> and value fell <strong>1.2%</strong>. Axes are cropped to show the relationship; points encode position, not bar length.</p>
+        <div class="chart-tools" data-chart="13"></div>
+      </figure>
+    </div>
+    <div class="takeaways">
+      <p class="eyebrow">THREE THINGS TO TAKE AWAY</p>
+      <div class="grid three"><p><strong>Plants set the scale.</strong> Nurseries dominate the value of this part of horticulture; flowers experienced the strongest latest-year recovery.</p><p><strong>Regions play different roles.</strong> Victoria leads flower production, WA leads production per resident, and Queensland leads flower exports.</p><p><strong>The trade mix is shifting.</strong> Vietnam’s growing role accounts for most of the latest increase in flower import value. The data does not establish why.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sources wrap" id="sources" aria-labelledby="sources-title">
+    <p class="eyebrow">ABOUT THE DATA</p><h2 id="sources-title">Sources, measures and limits</h2>
+    <div class="grid two source-grid">
+      <div><h3>Industry and trade</h3><p><a href="https://prod2.thegoodmoodfood.com.au/globalassets/hort-innovation/australian-horticulture-statistics-handbook/australian-horticulture-statistics-handbook-2024-25-other.pdf" target="_blank" rel="noopener">Hort Innovation, Australian Horticulture Statistics Handbook 2024/25, “All Other Horticulture”</a>, produced by Freshlogic by Kynetec. Printed pages 406, 409–411, 413–415 and 419. Trade figures are credited to Global Trade Atlas in the handbook.</p><p>The 2024/25 edition is the latest handbook located as at 29 September 2026. Five-year comparisons use that edition’s series, rather than mixing vintages.</p></div>
+      <div><h3>Population and geography</h3><p><a href="https://www.abs.gov.au/statistics/people/population/national-state-and-territory-population/mar-2026" target="_blank" rel="noopener">Australian Bureau of Statistics, National, state and territory population, March 2026</a>: Table 4 (310104.xlsx), persons at 30 June 2025, matched to the production year. This is a separate statistical source.</p><p><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> public-domain state and country boundaries. Australian maps use an Albers-style equal-area conic projection; the world map uses Equal Earth. Small offshore territories are omitted from the regional map.</p></div>
+    </div>
+    <div class="definitions"><p><strong>Production value</strong> describes the value of output at the producer level. <strong>Wholesale supply value</strong> is a different supply-chain measure: the handbook reports $452.7m for cut flowers in 2024/25. It should not be added to production or interpreted as retail spending.</p><p>All dollars are nominal Australian dollars. Values are estimates, mostly rounded to A$0.1m. State totals may not add exactly to the national total. Missing state values and values reported as “&lt;1” are preserved; they are not converted to zero or invented precise amounts. Flower production volumes and variety-level trends are not available in the selected handbook tables, so this story compares growing regions.</p><p><strong>Method:</strong> per-resident production = state production in A$m × 1,000,000 ÷ ABS residents. Indexed value = annual value ÷ 2020/21 value × 100. Annual growth = (current value ÷ previous value − 1) × 100. The visualisation joins Hort Innovation and ABS by state and the matching June 2025 reference period.</p></div>
+    <p class="resource-links"><a href="data/README.md">Data dictionary and provenance</a><a href="submission/Submission_Companion.pdf">Design explanation</a><a href="submission/Sketch_Layout_Guide.pdf">Sketch layout guide</a></p>
+  </section>
+</main>
+<footer class="wrap"><p><strong>Kevin</strong> · FIT3179 Data Visualisation 2 · 30 September 2026</p><p>AI acknowledgement: OpenAI ChatGPT assisted with research, data preparation, visual design, code and writing. All charts were created for this project using Vega and Vega-Lite; no published charts are reproduced. Figures use the sources listed above.</p></footer>
+<noscript><p class="noscript wrap">JavaScript is needed to display the interactive charts. The narrative and source links remain available.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,77 @@
+[
+  {
+    "state": "Victoria",
+    "year": 2023,
+    "value": 31.8
+  },
+  {
+    "state": "Victoria",
+    "year": 2024,
+    "value": 37.5
+  },
+  {
+    "state": "Victoria",
+    "year": 2025,
+    "value": 46.7
+  },
+  {
+    "state": "New South Wales",
+    "year": 2023,
+    "value": 37.5
+  },
+  {
+    "state": "New South Wales",
+    "year": 2024,
+    "value": 28.8
+  },
+  {
+    "state": "New South Wales",
+    "year": 2025,
+    "value": 28.8
+  },
+  {
+    "state": "Western Australia",
+    "year": 2023,
+    "value": 22.4
+  },
+  {
+    "state": "Western Australia",
+    "year": 2024,
+    "value": 16.5
+  },
+  {
+    "state": "Western Australia",
+    "year": 2025,
+    "value": 14.9
+  },
+  {
+    "state": "Queensland",
+    "year": 2023,
+    "value": 6.7
+  },
+  {
+    "state": "Queensland",
+    "year": 2024,
+    "value": 9.0
+  },
+  {
+    "state": "Queensland",
+    "year": 2025,
+    "value": 11.5
+  },
+  {
+    "state": "South Australia",
+    "year": 2023,
+    "value": 4.6
+  },
+  {
+    "state": "South Australia",
+    "year": 2024,
+    "value": 4.9
+  },
+  {
+    "state": "South Australia",
+    "year": 2025,
+    "value": 6.3
+  }
+]

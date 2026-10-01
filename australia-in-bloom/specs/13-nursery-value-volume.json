@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 285,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/annual.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.sector == \"Nursery\""
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "units_million",
+      "type": "quantitative",
+      "title": "Plants produced (million units)",
+      "scale": {
+        "domain": [
+          2000,
+          2400
+        ],
+        "zero": false
+      },
+      "axis": {
+        "format": ",.0f",
+        "tickCount": 4
+      }
+    },
+    "y": {
+      "field": "production",
+      "type": "quantitative",
+      "title": "Production value (A$m)",
+      "scale": {
+        "domain": [
+          2600,
+          2880
+        ],
+        "zero": false
+      },
+      "axis": {
+        "format": ",.0f",
+        "tickCount": 4
+      }
+    },
+    "tooltip": [
+      {
+        "field": "financial_year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "units_million",
+        "type": "quantitative",
+        "title": "Plants (million)",
+        "format": ",.0f"
+      },
+      {
+        "field": "production",
+        "type": "quantitative",
+        "title": "Production (A$m)",
+        "format": ",.1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#9aaea1",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "order": {
+          "field": "year",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.year == 2025",
+            "value": "#b63468"
+          },
+          "value": "#147d64"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": 8,
+        "dy": -12,
+        "align": "left",
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {
+          "field": "financial_year"
+        }
+      }
+    }
+  ]
+}

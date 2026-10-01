@@ -1,0 +1,110 @@
+[
+  {
+    "country": "Malaysia",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 22.9
+  },
+  {
+    "country": "Malaysia",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 22.6
+  },
+  {
+    "country": "Malaysia",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 22.6
+  },
+  {
+    "country": "Kenya",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 18.1
+  },
+  {
+    "country": "Kenya",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 17.8
+  },
+  {
+    "country": "Kenya",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 20.5
+  },
+  {
+    "country": "Vietnam",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 6.0
+  },
+  {
+    "country": "Vietnam",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 9.8
+  },
+  {
+    "country": "Vietnam",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 18.7
+  },
+  {
+    "country": "Ecuador",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 15.2
+  },
+  {
+    "country": "Ecuador",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 15.5
+  },
+  {
+    "country": "Ecuador",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 15.8
+  },
+  {
+    "country": "China",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 17.9
+  },
+  {
+    "country": "China",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 10.7
+  },
+  {
+    "country": "China",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 12.5
+  },
+  {
+    "country": "Others",
+    "year": 2023,
+    "financial_year": "2022/23",
+    "value": 22.9
+  },
+  {
+    "country": "Others",
+    "year": 2024,
+    "financial_year": "2023/24",
+    "value": 20.2
+  },
+  {
+    "country": "Others",
+    "year": 2025,
+    "financial_year": "2024/25",
+    "value": 17.9
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "country": "Japan",
+    "value": 1.9,
+    "reported_value": "1.9",
+    "share": 24.6
+  },
+  {
+    "country": "Netherlands",
+    "value": 1.9,
+    "reported_value": "1.9",
+    "share": 23.8
+  },
+  {
+    "country": "United States",
+    "value": 1.7,
+    "reported_value": "1.7",
+    "share": 22.0
+  },
+  {
+    "country": "China",
+    "value": 1.1,
+    "reported_value": "1.1",
+    "share": 14.3
+  },
+  {
+    "country": "South Korea",
+    "value": null,
+    "reported_value": "<1",
+    "share": 7.9
+  },
+  {
+    "country": "Others",
+    "value": null,
+    "reported_value": "<1",
+    "share": 7.3
+  }
+]

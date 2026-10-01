@@ -1,0 +1,22 @@
+[
+  {
+    "state": "Queensland",
+    "production_share": 19.0,
+    "export_share": 58.9
+  },
+  {
+    "state": "Western Australia",
+    "production_share": 21.9,
+    "export_share": 22.2
+  },
+  {
+    "state": "Victoria",
+    "production_share": 35.2,
+    "export_share": 18.0
+  },
+  {
+    "state": "New South Wales",
+    "production_share": 12.4,
+    "export_share": 0.9
+  }
+]

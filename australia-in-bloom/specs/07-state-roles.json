@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 235,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/state_roles.json"
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": [
+        "Queensland",
+        "Western Australia",
+        "Victoria",
+        "New South Wales"
+      ],
+      "title": null
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "production_share",
+        "type": "quantitative",
+        "title": "Share of AU production (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "export_share",
+        "type": "quantitative",
+        "title": "Share of AU exports (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#b5c5bb",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "production_share",
+          "type": "quantitative",
+          "title": "Share of the Australian total (%)",
+          "scale": {
+            "domain": [
+              0,
+              65
+            ]
+          }
+        },
+        "x2": {
+          "field": "export_share"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "production_share",
+            "export_share"
+          ],
+          "as": [
+            "role",
+            "share"
+          ]
+        },
+        {
+          "calculate": "datum.role == \"production_share\" ? \"Production\" : \"Exports\"",
+          "as": "role_label"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 110
+      },
+      "encoding": {
+        "x": {
+          "field": "share",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "role_label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Production",
+              "Exports"
+            ],
+            "range": [
+              "#b63468",
+              "#367fa5"
+            ]
+          }
+        },
+        "shape": {
+          "field": "role_label",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Production",
+              "Exports"
+            ],
+            "range": [
+              "circle",
+              "diamond"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "title": null
+          }
+        }
+      }
+    }
+  ]
+}

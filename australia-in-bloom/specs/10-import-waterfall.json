@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/import_change.json"
+  },
+  "encoding": {
+    "x": {
+      "field": "country",
+      "type": "ordinal",
+      "sort": {
+        "field": "order"
+      },
+      "title": null,
+      "axis": {
+        "labelAngle": -25,
+        "labelLimit": 110
+      }
+    },
+    "y": {
+      "field": "end",
+      "type": "quantitative",
+      "title": "Contribution to import growth (A$m)",
+      "scale": {
+        "domain": [
+          0,
+          15.2
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Origin"
+      },
+      {
+        "field": "change",
+        "type": "quantitative",
+        "title": "Change 2023/24\u20132024/25 (A$m)",
+        "format": "+.1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "width": {
+          "band": 0.7
+        }
+      },
+      "encoding": {
+        "y2": {
+          "field": "start"
+        },
+        "color": {
+          "field": "kind",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Rise",
+              "Fall",
+              "Total"
+            ],
+            "range": [
+              "#147d64",
+              "#ae7c24",
+              "#193c32"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -9,
+        "fontSize": 13,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

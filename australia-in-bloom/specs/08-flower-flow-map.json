@@ -1,0 +1,217 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 445,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -135,
+      0,
+      0
+    ]
+  },
+  "params": [
+    {
+      "name": "origin",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Malaysia",
+          "Kenya",
+          "Vietnam",
+          "Ecuador",
+          "China"
+        ],
+        "name": "Highlight origin: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "data/world.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e5ebe3",
+        "stroke": "#fff",
+        "strokeWidth": 0.45
+      }
+    },
+    {
+      "data": {
+        "url": "data/flower_flows.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "strokeWidth": {
+          "field": "properties.value",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              25
+            ],
+            "range": [
+              0,
+              10
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": "Import value (A$m)",
+            "values": [
+              10,
+              20
+            ],
+            "symbolType": "stroke",
+            "symbolStrokeColor": "#71887a",
+            "symbolSize": 300
+          }
+        },
+        "color": {
+          "field": "properties.country",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Malaysia",
+              "Kenya",
+              "Vietnam",
+              "Ecuador",
+              "China"
+            ],
+            "range": [
+              "#236853",
+              "#397d9f",
+              "#b63468",
+              "#a97823",
+              "#735ca2"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "origin == \"All\" || datum.properties.country == origin",
+            "value": 0.75
+          },
+          "value": 0.07
+        },
+        "tooltip": [
+          {
+            "field": "properties.country",
+            "type": "nominal",
+            "title": "Origin"
+          },
+          {
+            "field": "properties.value",
+            "type": "quantitative",
+            "title": "Imports to Australia (A$m)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/flow_labels.json"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 40,
+        "color": "#193c32"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/flow_labels.json"
+      },
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "color": "#193c32"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "label_longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "label_latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "country"
+        }
+      }
+    }
+  ]
+}

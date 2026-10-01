@@ -1,0 +1,122 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 260,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/flower_exports.json"
+  },
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "sort": [
+        "Japan",
+        "Netherlands",
+        "United States",
+        "China",
+        "South Korea",
+        "Others"
+      ],
+      "title": null
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Share of flower export value (%)",
+      "scale": {
+        "domain": [
+          0,
+          29
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Destination"
+      },
+      {
+        "field": "share",
+        "type": "quantitative",
+        "title": "Export share (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "reported_value",
+        "type": "nominal",
+        "title": "Reported export value (A$m)"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#367fa5",
+        "height": 19
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "format(datum.share,\".1f\")+\"%\"",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 13
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

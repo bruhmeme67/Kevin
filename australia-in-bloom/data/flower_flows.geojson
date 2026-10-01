@@ -1,0 +1,105 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Malaysia",
+        "value": 22.6
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            113.83708,
+            2.528667
+          ],
+          [
+            134.04972,
+            -24.129522
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Kenya",
+        "value": 20.5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            37.907632,
+            0.549043
+          ],
+          [
+            134.04972,
+            -24.129522
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Vietnam",
+        "value": 18.7
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105.387292,
+            21.715416
+          ],
+          [
+            134.04972,
+            -24.129522
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "Ecuador",
+        "value": 15.8
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -78.188375,
+            -1.259076
+          ],
+          [
+            134.04972,
+            -24.129522
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "country": "China",
+        "value": 12.5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            106.337289,
+            32.498178
+          ],
+          [
+            134.04972,
+            -24.129522
+          ]
+        ]
+      }
+    }
+  ]
+}

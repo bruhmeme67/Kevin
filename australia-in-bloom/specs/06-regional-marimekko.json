@@ -1,0 +1,202 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 310,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/state_mix.json"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1
+            ]
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y1",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1.23
+            ]
+          },
+          "axis": {
+            "values": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1
+            ],
+            "format": ".0%",
+            "title": "Within-region production mix"
+          }
+        },
+        "y2": {
+          "field": "y0"
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Nursery",
+              "Cut flowers"
+            ],
+            "range": [
+              "#147d64",
+              "#b63468"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "type": "nominal",
+            "title": "Region"
+          },
+          {
+            "field": "sector",
+            "type": "nominal",
+            "title": "Sector"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Production (A$m)",
+            "format": ",.1f"
+          },
+          {
+            "field": "sector_share",
+            "type": "quantitative",
+            "title": "Share within region",
+            "format": ".1%"
+          },
+          {
+            "field": "combined_value",
+            "type": "quantitative",
+            "title": "Combined value (A$m)",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.sector == \"Nursery\""
+        },
+        {
+          "calculate": "datum.region == \"SA + TAS\" ? 1.17 : 1.06",
+          "as": "label_y"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "field": "cx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "region"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.sector == \"Cut flowers\" && datum.sector_share > 0.12"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "white",
+        "opacity": {
+          "expr": "(datum.x1-datum.x0)*width >= 35 ? 1 : 0"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "cx",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "cy",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "sector_share",
+          "format": ".0%"
+        }
+      }
+    }
+  ]
+}

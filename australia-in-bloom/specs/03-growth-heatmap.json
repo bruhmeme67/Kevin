@@ -1,0 +1,147 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 165,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/annual.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.year > 2021"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "financial_year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "orient": "top"
+      }
+    },
+    "y": {
+      "field": "sector",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Nursery",
+        "Cut flowers",
+        "Turf"
+      ]
+    },
+    "tooltip": [
+      {
+        "field": "sector",
+        "type": "nominal",
+        "title": "Sector"
+      },
+      {
+        "field": "financial_year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "production_yoy_pct",
+        "type": "quantitative",
+        "title": "Annual change (%)",
+        "format": "+.1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "production_yoy_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              -14,
+              0,
+              14
+            ],
+            "range": [
+              "#be8642",
+              "#f3f5ef",
+              "#147d64"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "format(datum.production_yoy_pct,\"+.1f\")+\"%\"",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 14,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "condition": {
+            "test": "abs(datum.production_yoy_pct)>8",
+            "value": "white"
+          },
+          "value": "#193c32"
+        }
+      }
+    }
+  ]
+}

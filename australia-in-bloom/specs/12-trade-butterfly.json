@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 265,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/annual.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.sector == \"Cut flowers\""
+    },
+    {
+      "fold": [
+        "imports",
+        "exports"
+      ],
+      "as": [
+        "direction",
+        "value"
+      ]
+    },
+    {
+      "calculate": "datum.direction == \"imports\" ? -datum.value : datum.value",
+      "as": "signed"
+    },
+    {
+      "calculate": "datum.direction == \"imports\" ? \"Imports\" : \"Exports\"",
+      "as": "direction_label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "financial_year",
+      "type": "ordinal",
+      "title": null
+    },
+    "x": {
+      "field": "signed",
+      "type": "quantitative",
+      "title": "Imports (left) and exports (right), A$m",
+      "scale": {
+        "domain": [
+          -120,
+          30
+        ]
+      },
+      "axis": {
+        "labelExpr": "abs(datum.value)",
+        "values": [
+          -100,
+          -50,
+          0,
+          25
+        ]
+      }
+    },
+    "color": {
+      "field": "direction_label",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Imports",
+          "Exports"
+        ],
+        "range": [
+          "#b63468",
+          "#367fa5"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "financial_year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "direction_label",
+        "type": "nominal",
+        "title": "Trade"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Value (A$m)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": 22
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": {
+          "expr": "datum.signed < 0 ? -18 : 15"
+        },
+        "fontSize": 12,
+        "color": "#193c32"
+      },
+      "encoding": {
+        "text": {
+          "field": "value",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

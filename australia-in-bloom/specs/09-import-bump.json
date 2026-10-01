@@ -1,0 +1,218 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "data": {
+    "url": "data/flower_imports.json"
+  },
+  "transform": [
+    {
+      "filter": "datum.country != \"Others\""
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "value",
+          "order": "descending"
+        }
+      ],
+      "groupby": [
+        "year"
+      ]
+    }
+  ],
+  "params": [
+    {
+      "name": "countryFocus",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Malaysia",
+          "Kenya",
+          "Vietnam",
+          "Ecuador",
+          "China"
+        ],
+        "name": "Follow a country: "
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          2022.95,
+          2025.65
+        ],
+        "zero": false
+      },
+      "title": null,
+      "axis": {
+        "values": [
+          2023,
+          2024,
+          2025
+        ],
+        "format": "d",
+        "labelExpr": "datum.value == 2023 ? \"2022/23\" : datum.value == 2024 ? \"2023/24\" : \"2024/25\""
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          5.4,
+          0.6
+        ],
+        "zero": false
+      },
+      "axis": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "title": "Rank among five named origins"
+    },
+    "color": {
+      "field": "country",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Malaysia",
+          "Kenya",
+          "Vietnam",
+          "Ecuador",
+          "China"
+        ],
+        "range": [
+          "#236853",
+          "#397d9f",
+          "#b63468",
+          "#a97823",
+          "#735ca2"
+        ]
+      },
+      "legend": {
+        "columns": 3
+      }
+    },
+    "opacity": {
+      "condition": {
+        "test": "countryFocus == \"All\" || datum.country == countryFocus",
+        "value": 1
+      },
+      "value": 0.12
+    },
+    "tooltip": [
+      {
+        "field": "country",
+        "type": "nominal",
+        "title": "Origin"
+      },
+      {
+        "field": "financial_year",
+        "type": "nominal",
+        "title": "Year"
+      },
+      {
+        "field": "rank",
+        "type": "quantitative",
+        "title": "Rank",
+        "format": "d"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Imports (A$m)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 70
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2025"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {
+          "field": "country"
+        }
+      }
+    }
+  ]
+}

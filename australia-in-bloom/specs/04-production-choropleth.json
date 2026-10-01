@@ -1,0 +1,208 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 385,
+  "background": null,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 13,
+      "titleFontSize": 13,
+      "titleFontWeight": "normal",
+      "titlePadding": 13,
+      "labelColor": "#4d6158",
+      "titleColor": "#4d6158",
+      "gridColor": "#e4ebe6",
+      "domain": false,
+      "tickColor": "#ced9d1",
+      "labelPadding": 6,
+      "labelLimit": 180
+    },
+    "legend": {
+      "title": null,
+      "labelFontSize": 13,
+      "orient": "top",
+      "symbolSize": 100,
+      "padding": 8,
+      "labelColor": "#193c32",
+      "labelLimit": 180
+    },
+    "text": {
+      "fontSize": 13,
+      "color": "#193c32"
+    },
+    "title": {
+      "fontSize": 15,
+      "anchor": "start",
+      "color": "#193c32"
+    }
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -134,
+      0,
+      0
+    ],
+    "center": [
+      0,
+      -27
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e1e7e1",
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.flower_status",
+            "type": "nominal",
+            "title": "Reporting"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.properties.flower_per_resident)"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "properties.flower_per_resident",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              25
+            ],
+            "range": [
+              "#edf4ed",
+              "#11644f"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": "A$ per resident",
+            "gradientLength": 210,
+            "format": "$.0f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "properties.flower_production",
+            "type": "quantitative",
+            "title": "Flower production (A$m)",
+            "format": ",.1f"
+          },
+          {
+            "field": "properties.population",
+            "type": "quantitative",
+            "title": "Residents, 30 June 2025",
+            "format": ","
+          },
+          {
+            "field": "properties.flower_per_resident",
+            "type": "quantitative",
+            "title": "Production per resident (A$)",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/states.json"
+      },
+      "transform": [
+        {
+          "filter": "datum.abbr != \"ACT\""
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 13
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "abbr"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.flower_per_resident>14",
+            "value": "white"
+          },
+          "value": "#193c32"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "flower_per_resident",
+            "type": "quantitative",
+            "title": "Production per resident (A$)",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ]
+}

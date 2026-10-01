@@ -1,0 +1,72 @@
+[
+  {
+    "country": "Malaysia",
+    "start": 0,
+    "end": 0,
+    "after": 0.0,
+    "change": 0.0,
+    "order": 0,
+    "kind": "Rise",
+    "label": "+0.0"
+  },
+  {
+    "country": "Kenya",
+    "start": 0.0,
+    "end": 2.7,
+    "after": 2.7,
+    "change": 2.7,
+    "order": 1,
+    "kind": "Rise",
+    "label": "+2.7"
+  },
+  {
+    "country": "Vietnam",
+    "start": 2.7,
+    "end": 11.6,
+    "after": 11.6,
+    "change": 8.9,
+    "order": 2,
+    "kind": "Rise",
+    "label": "+8.9"
+  },
+  {
+    "country": "Ecuador",
+    "start": 11.6,
+    "end": 11.9,
+    "after": 11.9,
+    "change": 0.3,
+    "order": 3,
+    "kind": "Rise",
+    "label": "+0.3"
+  },
+  {
+    "country": "China",
+    "start": 11.9,
+    "end": 13.7,
+    "after": 13.7,
+    "change": 1.8,
+    "order": 4,
+    "kind": "Rise",
+    "label": "+1.8"
+  },
+  {
+    "country": "Others",
+    "start": 11.4,
+    "end": 13.7,
+    "after": 11.4,
+    "change": -2.3,
+    "order": 5,
+    "kind": "Fall",
+    "label": "-2.3"
+  },
+  {
+    "country": "Net rise",
+    "start": 0,
+    "end": 11.4,
+    "after": 11.4,
+    "change": 11.4,
+    "order": 6,
+    "kind": "Total",
+    "label": "+11.4"
+  }
+]
