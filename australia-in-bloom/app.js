@@ -66,13 +66,6 @@ function element(tag,text,className) {
 
 async function addChartTools(def) {
   const tools=document.querySelector(`.chart-tools[data-chart="${def.id}"]`);
-  const link=element("a","View chart JSON");
-  const path=`specs/${def.file}.json`;
-  if(window.INLINE_ASSETS) {
-    link.href=URL.createObjectURL(new Blob([JSON.stringify(await readAsset(path),null,2)],{type:"application/json"}));
-    link.download=`${def.file}.json`;
-  } else {link.href=path;link.target="_blank";link.rel="noopener";}
-  tools.append(link);
   const details=element("details");
   details.append(element("summary","Read the values"));
   const table=element("table");
