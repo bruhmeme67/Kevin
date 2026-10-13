@@ -86,7 +86,9 @@ async function addChartTools(def) {
     }
     body.append(tr);
   }
-  table.append(body);details.append(table,element("p",def.source,"table-note"));tools.append(details);
+  table.append(body);
+  details.append(table);
+  tools.append(details);
 }
 
 async function renderChart(def) {
